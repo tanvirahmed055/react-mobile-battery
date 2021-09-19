@@ -11,15 +11,6 @@ function App() {
 }
 
 
-function Blog(props) {
-  console.log(props);
-  return (
-    <div className='blog'>
-      <h3>The heading of the blog component is: {props.heading} </h3>
-      <p>The author name of the blog component is: {props.author} </p>
-    </div>
-  )
-}
 
 
 function Mobile(props) {
@@ -27,12 +18,15 @@ function Mobile(props) {
 
   const handleBatteryDown = () => {
     const newCharge = charge - 10;
+    if (newCharge < 0) {
+      return;
+    }
     setCharge(newCharge);
   }
 
   return (
     <div>
-      <h2>Battery Charge Remaining: {charge}</h2>
+      <h2>Battery Charge Remaining: {charge}%</h2>
       <button onClick={handleBatteryDown}>battery down</button>
     </div>
   )
